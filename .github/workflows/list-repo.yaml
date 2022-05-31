@@ -1,0 +1,21 @@
+---
+name: List repo
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  list-repo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: check out repo
+      uses: actions/checkout@v2
+
+    - name: list repo
+      run: |
+        cd path
+
+    name: list repo
+    run: ls
