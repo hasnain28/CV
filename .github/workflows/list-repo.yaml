@@ -4,7 +4,7 @@ name: List repo
 on:
   push:
     branches:
-    - main
+      - master
 
 jobs:
   list-repo:
@@ -13,9 +13,9 @@ jobs:
     - name: check out repo
       uses: actions/checkout@v2
 
-    - name: list repo
+    - name: List Repo
       run: |
         cd path
 
-    - name: list repo
+    - name: List Repo
       run: ls
