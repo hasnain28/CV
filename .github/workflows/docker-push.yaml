@@ -27,5 +27,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: $user/$repo:latest
+        tags: user/repo:latest
       
