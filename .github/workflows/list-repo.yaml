@@ -17,5 +17,5 @@ jobs:
       run: |
         cd path
 
-    name: list repo
-    run: ls
+    - name: list repo
+      run: ls
