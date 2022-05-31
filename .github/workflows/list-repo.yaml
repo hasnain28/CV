@@ -4,7 +4,7 @@ name: List repo
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   list-repo:
