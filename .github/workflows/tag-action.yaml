@@ -1,5 +1,5 @@
 ---
-name: List repo
+name:  Run when new tag is created
 
 on:
   push:

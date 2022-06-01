@@ -1,5 +1,5 @@
 ---
-name: List repo
+name: push on main or PR
 
 on:
   push:
