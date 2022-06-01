@@ -19,3 +19,5 @@ jobs:
 
     - name: List Repo
       run: ls
+    - name: show enc
+      run: echo "{{GITHUB_EVENT_NAME}}"
