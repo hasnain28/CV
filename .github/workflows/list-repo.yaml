@@ -15,6 +15,9 @@ jobs:
     - name: check out repo
       uses: actions/checkout@v2
 
+    - name: who triggered
+      run: echo "$GITHUB_EVENT_NAME"	
+
     - name: Generate Vars
       id: generate_vars
       run: |
@@ -34,6 +37,7 @@ jobs:
     - name: Build Docker Image
       run: |
         docker build -t ${{ steps.generate_vars.outputs.image }}  .
+        
         
 
 
