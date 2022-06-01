@@ -19,7 +19,11 @@ jobs:
 
     - name: List Repo
       run: ls
-    - name: show enc
+    - name: show env1
       run: |
         echo $GITHUB_EVENT_NAME
-        echo $GITHUB_ENV
+    - name: show env2
+      run: |
+        echo $GITHUB_REPOSITORY_OWNER	
+    
+    
