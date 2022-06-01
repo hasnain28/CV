@@ -23,9 +23,9 @@ jobs:
         # Just Tag
         IMAGE_TAG=sha-$(echo $(git rev-parse --short HEAD) | cut -c1-7)
         # Just Image name
-        IMAGE_NAME=hasnainzaib/cv
+        REPO_NAME=hasnainzaib/cv
         #Image ID= Name + Tag
-        IMAGE_ID=$IMAGE_NAME:$IMAGE_TAG
+        IMAGE_ID=$REPO_NAME:$IMAGE_TAG
         IMAGE=$(echo $IMAGE_ID | tr '[:upper:]' '[:lower:]')
         echo "Image: $IMAGE"
         echo "::set-output name=image::$IMAGE"
