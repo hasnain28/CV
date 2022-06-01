@@ -27,6 +27,6 @@ jobs:
         echo $GITHUB_REPOSITORY_OWNER	
     - name: show env3
       run: |
-        echo ${{ github.event.inputs.tags }} 	
+        echo $github.event.inputs.tags 	
 
     
