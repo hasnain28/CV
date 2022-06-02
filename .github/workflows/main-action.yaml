@@ -11,6 +11,8 @@ on:
 jobs:
   list-repo:
     runs-on: ubuntu-latest
+    env:
+      name: hasnainzaib
     steps:
     - name: check out repo
       uses: actions/checkout@v2
@@ -24,7 +26,7 @@ jobs:
         # Just Tag
         IMAGE_TAG=sha-$(echo $(git rev-parse --short HEAD) | cut -c1-7)
         # Just Image name
-        IMAGE_NAME=${{ github.repository }}
+        IMAGE_NAME=${{ env.name }}
         echo "$IMAGE_NAME"
         #Image ID= Name + Tag
         IMAGE_ID=$IMAGE_NAME:$IMAGE_TAG
@@ -34,8 +36,7 @@ jobs:
         echo "::set-output name=image_name::$IMAGE_ID"
         echo "::set-output name=image_tag::$IMAGE_TAG"
         echo ""
-      env:
-        name: hasnainzaib
+        
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
@@ -44,7 +45,7 @@ jobs:
     - name: Login to DockerHub
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
+        username: ${{ secrets.DOCKER_USERNAME_ZAIB }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
 
