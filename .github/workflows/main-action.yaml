@@ -60,6 +60,7 @@ jobs:
 
     - name: cd into repo and execute
       run: |
+        cd symbiosis
         cd cluster
         cd cv
         yq eval -i '.spec.values.deployment.image.tag ="'${{ steps.generate_vars.outputs.image }}'"' "${file}"
