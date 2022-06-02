@@ -55,6 +55,7 @@ jobs:
       uses: actions/checkout@master
       with:
         repository: hasnain28/symbiosis
+        token: ${{ secrets.ACTIONS_PAT }}
 
     - name: cd into repo and execute
       run: |
