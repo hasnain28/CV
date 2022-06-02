@@ -33,6 +33,8 @@ jobs:
         echo "::set-output name=image_name::$IMAGE_ID"
         echo "::set-output name=image_tag::$IMAGE_TAG"
         echo ""
+      env:
+        username: hasnainzaib
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
@@ -64,13 +66,12 @@ jobs:
         cd symbiosis
         cd cluster
         cd cv
-        yq eval -i '.spec.values.deployment.image.tag ="'${{ steps.generate_vars.outputs.image }}'"' "${file}"
-        yq eval -i '.spec.values.deployment.image.tag ="'${tag}'"' "${file}"
+        yq eval -i '.spec.values.deployment.image.tag ="'${{ steps.generate_vars.outputs.image_tag }}'"' "${file}"
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        # git add "${file}"
-        # git commit -m "update helm release.yaml"
-        # git push
+        git add "${file}"
+        git commit -m "update helm release.yaml"
+        git push
       env:        
         file: helm-release.yaml 
 
