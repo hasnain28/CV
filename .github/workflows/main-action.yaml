@@ -54,7 +54,7 @@ jobs:
     - name: Clone symbiosis repo
       uses: actions/checkout@master
       with:
-        repository: symbiosis/tree/main/cluster/cv
+        repository: hasnain28/symbiosis
         
 
 
