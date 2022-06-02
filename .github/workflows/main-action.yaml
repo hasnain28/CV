@@ -60,7 +60,7 @@ jobs:
       run: |
         git checkout main
         ls
-        cd cluster/angular/cv
+        cd cluster
         yq eval -i '.spec.values.deployment.image.tag ="'${{ steps.generate_vars.outputs.image }}'"' "${file}"
         yq eval -i '.spec.values.deployment.image.tag ="'${tag}'"' "${file}"
         git add "${file}"
