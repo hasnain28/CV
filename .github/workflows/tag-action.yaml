@@ -44,7 +44,11 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
 
-    - name: Build Docker Image
+    - name: Build  and push Docker Image
       run: |
         docker build -t ${{ steps.generate_vars.outputs.image }}  .
         docker push ${{ steps.generate_vars.outputs.image }}
+    - name: Clone symbiosis repo
+      uses: actions/checkout@master
+      with:
+        repository: symbiosis/tree/main/cluster/cv
