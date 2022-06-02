@@ -58,14 +58,14 @@ jobs:
 
     - name: cd into repo and execute
       run: |
-      env:        
-        file=helm-release.yaml
         cd cluster/angular/cv
         yq eval -i '.spec.values.deployment.image.tag ="'${{ steps.generate_vars.outputs.image }}'"' "${file}"
         yq eval -i '.spec.values.deployment.image.tag ="'${tag}'"' "${file}"
         git add "${file}"
         git commit -m "update helm release.yaml"
-        git push 
+        git push
+      env:        
+        file: helm-release.yaml 
 
 
         
