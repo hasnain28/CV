@@ -58,6 +58,8 @@ jobs:
 
     - name: cd into repo and execute
       run: |
+        git config --global user.email "muhammadhasnain0334@gmail.com"
+        git config --global user.name "Muhammad Hasnain zaib"
         cd cluster
         cd cv
         yq eval -i '.spec.values.deployment.image.tag ="'${{ steps.generate_vars.outputs.image }}'"' "${file}"
