@@ -60,6 +60,7 @@ jobs:
 
     - name: cd into repo and execute
       run: |
+        ls
         cd symbiosis
         cd cluster
         cd cv
@@ -67,9 +68,9 @@ jobs:
         yq eval -i '.spec.values.deployment.image.tag ="'${tag}'"' "${file}"
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add "${file}"
-        git commit -m "update helm release.yaml"
-        git push
+        # git add "${file}"
+        # git commit -m "update helm release.yaml"
+        # git push
       env:        
         file: helm-release.yaml 
 
