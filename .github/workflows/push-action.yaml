@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: print env
       run:  echo ${GITHUB_REF##*/}
+    - name: print source
+      run:  echo ${github.base_ref}	
 
       
         
