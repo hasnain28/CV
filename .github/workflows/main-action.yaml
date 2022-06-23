@@ -11,6 +11,8 @@ on:
 jobs:
   list-repo:
     runs-on: ubuntu-latest
+    env:
+      name: hasnainzaib/cv
     steps:
     - name: check out repo
       uses: actions/checkout@v2
@@ -24,7 +26,8 @@ jobs:
         # Just Tag
         IMAGE_TAG=sha-$(echo $(git rev-parse --short HEAD) | cut -c1-7)
         # Just Image name
-        IMAGE_NAME=${{ github.repository }}
+        IMAGE_NAME=${{ env.name }}
+        echo "$IMAGE_NAME"
         #Image ID= Name + Tag
         IMAGE_ID=$IMAGE_NAME:$IMAGE_TAG
         IMAGE=$(echo $IMAGE_ID | tr '[:upper:]' '[:lower:]')
@@ -33,6 +36,7 @@ jobs:
         echo "::set-output name=image_name::$IMAGE_ID"
         echo "::set-output name=image_tag::$IMAGE_TAG"
         echo ""
+        
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
@@ -41,7 +45,7 @@ jobs:
     - name: Login to DockerHub
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
+        username: ${{ secrets.DOCKER_USERNAME_ZAIB }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
 
@@ -55,12 +59,18 @@ jobs:
       uses: actions/checkout@master
       with:
         repository: hasnain28/symbiosis
+        path: symbiosis
+        token: ${{ secrets.ACTIONS_PAT }}
 
     - name: cd into repo and execute
       run: |
-        cd cluster/angular/cv
-        yq eval -i '.spec.values.deployment.image.tag ="'${{ steps.generate_vars.outputs.image }}'"' "${file}"
-        yq eval -i '.spec.values.deployment.image.tag ="'${tag}'"' "${file}"
+        ls
+        cd symbiosis
+        cd cluster
+        cd cv
+        yq eval -i '.spec.values.deployment.image.tag ="'${{ steps.generate_vars.outputs.image_tag }}'"' "${file}"
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
         git add "${file}"
         git commit -m "update helm release.yaml"
         git push

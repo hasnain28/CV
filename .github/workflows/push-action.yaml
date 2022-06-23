@@ -1,0 +1,16 @@
+name: pull request
+
+on: 
+  pull:
+    branches:
+      - master
+
+jobs:
+  list-repo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print env
+      run: $ echo ${GITHUB_REF##*/}
+
+      
+        
