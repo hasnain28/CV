@@ -13,7 +13,7 @@ jobs:
     - name: print env
       run:  echo ${GITHUB_REF##*/}
     - name: print source
-      run:  echo ${github.base_ref}	
+      run:  echo ${GITHUB_HEAD_REF}	
 
       
         
