@@ -1,9 +1,10 @@
 name: pull request
 
 on: 
-  pull:
+  push:
     branches:
       - master
+      - feat/actions
 
 jobs:
   list-repo:
