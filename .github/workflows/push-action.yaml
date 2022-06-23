@@ -14,9 +14,7 @@ jobs:
       run:  echo ${{ github.event.pull_request.base.ref }}
     - name: print source
       run:  echo ${GITHUB_HEAD_REF}	
-    - name: if else
-      uses: actions/hello-world-javascript-action@v1.1
-        if: ${{ github.base_ref == 'main' }}
+    
 
       
         
