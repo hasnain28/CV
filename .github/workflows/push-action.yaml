@@ -1,16 +1,20 @@
 name: pull request
 
 on: 
-  pull:
+  push:
     branches:
       - master
+      - feat/actions
 
 jobs:
   list-repo:
     runs-on: ubuntu-latest
     steps:
     - name: print env
-      run: $ echo ${GITHUB_REF##*/}
+      run:  echo ${{ github.event.pull_request.base.ref }}
+    - name: print source
+      run:  echo ${GITHUB_HEAD_REF}	
+    
 
       
         
